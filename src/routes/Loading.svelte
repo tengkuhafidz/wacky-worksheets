@@ -8,6 +8,6 @@
     <div style="display: flex; justify-content: center;" >
         <RingLoader size={100} color="#333333"/>
     </div>
-    <h4>Generating {itemType}...</h4>
+    <h4 class="padding-bottom-none margin-bottom-none">Generating {itemType}...</h4>
     <p class="padding-none margin-none">(It might take awhile 👀)</p>
 </div>   

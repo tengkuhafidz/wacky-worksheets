@@ -43,7 +43,7 @@ const getTopicItems = async (topic: string) => {
 
     const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `list down 6 distinct ${topic}, separated solely by commas`,
+        prompt: `list down 3 distinct ${topic}, separated solely by commas`,
         max_tokens: 280,
         n: 1,
         temperature: 0.8
