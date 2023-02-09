@@ -26,7 +26,7 @@ export const actions = {
 }
 
 const generateQuestions = async (mainPrompt: string, numOfQuestions: number, mood: string, itemsToReplace?: string[]) => {
-	console.log("Starting to generate images with openai...", mainPrompt, numOfQuestions, mood, itemsToReplace)
+	console.log("Starting to generate questions with openai...", mainPrompt, numOfQuestions, mood, itemsToReplace)
 
 	const response = await openai.createCompletion({
 		model: "text-davinci-003",
