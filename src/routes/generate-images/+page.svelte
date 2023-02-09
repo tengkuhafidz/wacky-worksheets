@@ -28,35 +28,24 @@
             <textarea placeholder="Get creative; the sky is the NOT the limit!" id="generate-images" name="image-prompt" class="input-block shadow" value={mainPrompt}/>
         </div>
         <div class="row">
-            <div class="sm-6 md-4 col">
+            <div class="sm-6 md-4 col text-left">
                 <p class="text-left margin-top-none">Image Styles:</p>
-                <fieldset class="form-group">
-                    <label class="paper-switch">
+                <fieldset class="form-group margin-bottom-none">
+                    <label class="paper-check" for="switch-black-white">
                         <input id="switch-black-white" name="image-styles" type="checkbox" bind:checked={isBlackWhite} value="black & white"/>
-                        <span class="paper-switch-slider"></span>
-                    </label>
-                    <label for="switch-black-white" class="paper-switch-label">
-                        Black & White
+                        <span>Back & White</span>
                     </label>
                 </fieldset>
-        
-                <fieldset class="form-group">
-                    <label class="paper-switch">
+                <fieldset class="form-group margin-bottom-none">
+                    <label class="paper-check" for="switch-flat">
                         <input id="switch-flat" name="image-styles" type="checkbox" bind:checked={isFlat}  value="flat"/>
-                        <span class="paper-switch-slider"></span>
-                    </label>
-                    <label for="switch-flat" class="paper-switch-label">
-                        Flat
+                        <span>Flat</span>
                     </label>
                 </fieldset>
-        
-                <fieldset class="form-group">
-                    <label class="paper-switch">
+                <fieldset class="form-group margin-bottom-none">
+                    <label class="paper-check" for="switch-cartoon">
                         <input id="switch-cartoon" name="image-styles" type="checkbox" bind:checked={isCartoon} value="cartoon"/>
-                        <span class="paper-switch-slider"></span>
-                    </label>
-                    <label for="switch-cartoon" class="paper-switch-label">
-                        Cartoon
+                        <span>Cartoon</span>
                     </label>
                 </fieldset>
             </div>
