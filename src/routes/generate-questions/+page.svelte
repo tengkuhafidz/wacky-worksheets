@@ -13,7 +13,7 @@
     let isBlackWhite = true
     let isFlat = true
     let isCartoon = true
-    let numOfQuestions = 2
+    let numOfQuestions = 4
 
     let isLoading = false
 
