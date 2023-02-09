@@ -32,7 +32,11 @@
 		"dotenv": "^16.0.3",
 		"firebase": "^9.16.0",
 		"fuse.js": "^6.6.2",
+		"html2pdf.js": "^0.10.1",
+		"install": "^0.13.0",
 		"nanoid": "^4.0.0",
-		"openai": "^3.1.0"
+		"npm": "^9.4.2",
+		"openai": "^3.1.0",
+		"svelte-loading-spinners": "^0.3.4"
 	}
 }

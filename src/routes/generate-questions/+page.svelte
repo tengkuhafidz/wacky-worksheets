@@ -1,8 +1,10 @@
 <script lang="ts">
 	import Hero from "../Hero.svelte";
+    import { enhance } from '$app/forms';
+	import Loading from "../Loading.svelte";
 
     // export let data
-    // export let form
+    export let form
     
     // const imageStyles = data.imageStyles?.split(",") || ['black & white', 'flat', 'cartoon']
 
@@ -13,14 +15,17 @@
     let isCartoon = true
     let numOfQuestions = 2
 
+    let isLoading = false
+
 </script>
 
-<Hero title="Generate fun questions! 🤪" description="making questions engaging helps to retain students' focus. 🤓" />
+<Hero title="Generate Fun Questions! 🤪" description="Automatically generate similar questions with your preferred twist 🤖🪄 " />
 
+{#if !isLoading}
 <div class="text-center padding-top-large margin-top padding-bottom container container-sm">
-    <form method="POST">
+    <form method="POST" use:enhance={() => {isLoading=true}}>
         <div class="form-group">
-            <textarea placeholder="Paste a sample question that you want to replicate" id="generate-questions" name="text-prompt" class="input-block shadow" value={mainPrompt}/>
+            <textarea placeholder="Type in the sample question that you want to replicate" id="generate-questions" name="text-prompt" class="input-block shadow" value={mainPrompt}/>
         </div>
         <div class="row">
             <div class="sm-6 md-3 col">
@@ -51,11 +56,21 @@
             
                     <fieldset class="form-group">
                         <label class="paper-switch">
-                            <input id="switch-flat" name="replace-items" type="checkbox" bind:checked={isFlat}  value="setting"/>
+                            <input id="switch-flat" name="replace-items" type="checkbox" bind:checked={isFlat}  value="objects"/>
                             <span class="paper-switch-slider"></span>
                         </label>
                         <label for="switch-flat" class="paper-switch-label">
-                            Setting
+                            Objects
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label class="paper-switch">
+                            <input id="switch-flat" name="replace-items" type="checkbox" bind:checked={isFlat}  value="action words"/>
+                            <span class="paper-switch-slider"></span>
+                        </label>
+                        <label for="switch-flat" class="paper-switch-label">
+                            Actions
                         </label>
                     </fieldset>
             
@@ -84,9 +99,22 @@
         </div>
     </form>
 </div>
+{/if}
 
-<!-- <div>
-    {#if form?.success}
-        <Listing imageRecords={form?.data?.imageRecords} />
-    {/if}
-</div> -->
+{#if isLoading && !form?.success} 
+    <Loading itemType="Questions"/>   
+{/if}
+
+{#if form?.success}
+    <div class="margin-top-large margin-bottom-large container container-sm">
+        {#each form?.responseData as suggestedQuestion}
+            <div class="card margin-bottom-large">
+                <div class="card-body">
+                    <p class="card-text">{suggestedQuestion}</p>
+                    <button class="card-link paper-btn btn-small btn-primary">Copy Question</button>
+                    <a class="card-link paper-btn btn-small" href={`/generate-images?mainPrompt=${suggestedQuestion}`}>Generate Image</a>
+                </div>
+            </div>
+        {/each}
+    </div>
+{/if}

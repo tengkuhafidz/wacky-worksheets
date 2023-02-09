@@ -44,7 +44,7 @@ const generateImages = async (mainPrompt: string, numOfImages: number, imageStyl
 	console.log("Starting to generate images with openai...", mainPrompt, numOfImages, imageStyles)
 
 	const response = await openai.createImage({
-		prompt: `${mainPrompt}, ${imageStyles?.join(", ")}`,
+		prompt: `${mainPrompt}, ${imageStyles?.join(", ")}. More whitespace around the image.`,
 		n: numOfImages,
 		size: '256x256',
 		response_format: 'b64_json'

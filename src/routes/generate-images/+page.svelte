@@ -1,6 +1,9 @@
 <script lang="ts">
 	import Hero from "../Hero.svelte";
 	import Listing from "../Listing.svelte";
+    import { enhance } from '$app/forms';
+	import Loading from "../Loading.svelte";
+
 
     export let data
     export let form
@@ -12,12 +15,15 @@
     let isFlat = imageStyles.includes('flat');
     let isCartoon = imageStyles.includes('cartoon');
     let numOfImages = 2
+
+    let isLoading = false
 </script>
 
 <Hero title="Generate Fun Images! 🤪" description="wacky images retains in the 🧠 better 🤓" />
 
+{#if !isLoading}
 <div class="text-center padding-top-large margin-top padding-bottom container container-sm">
-    <form method="POST">
+    <form method="POST" use:enhance={() => {isLoading=true}}>
         <div class="form-group">
             <textarea placeholder="Get creative; the sky is the NOT the limit!" id="generate-images" name="image-prompt" class="input-block shadow" value={mainPrompt}/>
         </div>
@@ -69,9 +75,12 @@
         </div>
     </form>
 </div>
+{/if}
 
-<div>
-    {#if form?.success}
-        <Listing imageRecords={form?.responseData?.imageRecords} />
-    {/if}
-</div>
+{#if isLoading && !form?.success} 
+    <Loading itemType="Images"/>   
+{/if}
+
+{#if form?.success}
+    <Listing imageRecords={form?.responseData?.imageRecords} />
+{/if}

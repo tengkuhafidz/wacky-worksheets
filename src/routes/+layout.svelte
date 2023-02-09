@@ -10,13 +10,15 @@
         <div class="bar3"></div>
       </label>
       <div class="collapsible-body">
-        <!-- <ul class="inline">
-          <li><a href="/">Image Gallery</a></li>
-          <li><a href="/generate-questions" class="btn-block">Worksheet Generator</a></li>
-        </ul> -->
+        <ul class="inline">
+          <li><a href="/">Images</a></li>
+          <li><a href="/generate-questions" class="btn-block">Questions</a></li>
+          <li><a href="/generate-flashcards" class="btn-block">Flashcards</a></li>
+        </ul>
       </div>
     </div>
   </nav>
-  <main class="margin-top-large padding-top-large">
+  <main class="margin-top-large padding-top-large padding-bottom-large">
       <slot />
   </main>
+

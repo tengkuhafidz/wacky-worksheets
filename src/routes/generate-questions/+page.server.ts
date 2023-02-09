@@ -11,17 +11,16 @@ export const actions = {
 	default: async ({ request }: RequestEvent) => {
 		const formData = await request.formData()
 		const mainPrompt = formData.get("text-prompt") as string
-		const mood = formData.get("mood") as string === "on" ? "wacky" : "serious"
+		const mood = formData.get("mood") as string === "on" ? "wacky and funny" : "serious"
 		const itemsToReplace = formData.getAll("replace-items") as string[]
 		const numOfQuestion = Number(formData.get("num-questions") as string)
-		console.log(">>> mainPrompt, mood, itemsToReplace, numOfQuestion", mainPrompt, mood, itemsToReplace, numOfQuestion)
 
-		const responseData = await generateQuestions(mainPrompt, numOfQuestion, mood, itemsToReplace)
-		console.log(">>> responseData", responseData)
+		const { choices } = await generateQuestions(mainPrompt, numOfQuestion, mood, itemsToReplace)
+		const responseData = choices?.map(choice => choice.text)
 
 		return {
 			success: true,
-			responseData
+			responseData: responseData
 		}
 	}
 }
@@ -31,10 +30,10 @@ const generateQuestions = async (mainPrompt: string, numOfQuestions: number, moo
 
 	const response = await openai.createCompletion({
 		model: "text-davinci-003",
-		prompt: `Generate a different variation of the following quiz question in a ${mood} tone, and replace the objects, ${itemsToReplace?.join(", ")}. "${mainPrompt}"`,
-		max_tokens: 400,
+		prompt: `Generate a different variation of the following quiz question in a ${mood} tone, and replace the ${itemsToReplace?.join(', ')}: ${mainPrompt}`,
+		max_tokens: 280,
 		n: numOfQuestions,
-		temperature: 0.6
+		temperature: 0.8
 	})
 
 	return {

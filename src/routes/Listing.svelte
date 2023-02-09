@@ -17,7 +17,7 @@
 <div class="row flex-center margin-large">
     {#if imageRecords?.length > 0}
     {#each imageRecords as imageRecord}
-    <div class="col sm-6 md-2 padding-small">
+        <div class="col sm-6 md-2 padding-small">
                 <div class="card">
                     <img src={imageRecord.imageUrl} alt={imageRecord.mainPrompt}>
                     <div class="padding-small text-center">
