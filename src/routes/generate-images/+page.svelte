@@ -48,6 +48,7 @@
                         <span>Cartoon</span>
                     </label>
                 </fieldset>
+                <input name="image-styles" value="extreme long shot" type="hidden"/>
             </div>
 
             <div class="sm-6 md-4 col text-left padding-top-small">
