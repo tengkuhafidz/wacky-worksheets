@@ -19,8 +19,8 @@
     let isLoading = false
 </script>
 
-<Hero title="Generate Fun Images! 🤪" description="wacky images retains in the 🧠 better 🤓" />
-
+<Hero title="Generate Fun Images! 🤪" description="wacky images retains in the 🧠 better, proven by science 🧪 !" />
+<p class="text-center margin-top-small"> <a target="_blank" href="https://scholar.google.com.sg/scholar?q=bizarre+imagery+memory&hl=en&as_sdt=0&as_vis=1&oi=scholart">Find out more here</a> </p>    
 {#if !isLoading}
 <div class="text-center padding-top-large margin-top padding-bottom container container-sm">
     <form method="POST" use:enhance={() => {isLoading=true}}>
