@@ -61,7 +61,7 @@ const generateImages = async (topicItems: string[], creativeScene: string, artSt
     const requests = []
     for (const item of topicItems) {
         requests.push(openai.createImage({
-            prompt: `${item} ${creativeScene}, ${artStyle} made with ${drawingTool}, ${colours} vibe`,
+            prompt: `${item} ${creativeScene}, ${artStyle} made with ${drawingTool}, ${colours}, extreme long shot`,
             n: 1,
             size: '256x256',
             response_format: 'b64_json'
